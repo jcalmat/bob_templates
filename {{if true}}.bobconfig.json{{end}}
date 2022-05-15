@@ -1,0 +1,31 @@
+{
+    "commands": [
+{{if .generate_golang_example}}
+        {
+            "golang_example": {
+                "path": "/path/to/templates_dir"
+            }
+        }{{if .generate_js_example}},{{end}}
+{{end}}
+{{if .generate_js_example}}
+        {
+            "javascript_example": {
+                "path": "/path/to/templates_dir"
+            }
+        }
+{{end}}
+    ],
+    "settings": {
+{{if .generate_git_private_ssh}}
+        "git": {
+            "ssh": {
+                "privateKeyFile": "{{.private_git_key}}"{{if .private_git_key_password_required}},
+                "privateKeyPassword": "{{.private_git_key_password}}"{{end}}
+            }
+        },
+        "skip": [
+            ".git",
+            ".bobconfig.json"
+        ]
+    }
+}

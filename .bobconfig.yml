@@ -1,0 +1,26 @@
+# Register your commands here
+vars:
+  - name: "generate_golang_example"
+    format: "Generate Golang Example"
+    type: "bool"
+  - name: "generate_js_example"
+    format: "Generate JS Example"
+    type: "bool"
+  - name: "generate_git_private_ssh"
+    format: "Generate Git Private SSH"
+    type: "bool"
+    deps:
+      - name: "private_git_key"
+        format: "Path to your git private ssh key"
+        type: "string"
+      - name: "private_git_key_password_required"
+        format: "Does it require a password?"
+        type: "bool"
+        deps:
+          - name: "private_git_key_password"
+            format: "Path to your git private ssh key password"
+            type: "string"
+            
+skip: # files or folders to ignore
+  - ".git"
+  - ".bobconfig.yml"
